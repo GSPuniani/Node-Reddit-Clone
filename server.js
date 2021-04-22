@@ -1,8 +1,21 @@
 // Require Libraries
 const express = require('express');
+const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
 
 // App Setup
 const app = express();
+require('./controllers/posts.js')(app);
+
+// Set db
+require('./data/reddit-db');
+
+// Use Body Parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Add after body parser initialization!
+app.use(expressValidator());
 
 // Middleware
 const exphbs  = require('express-handlebars');
@@ -14,6 +27,11 @@ app.set('view engine', 'handlebars');
 app.get('/', (req, res) => {
     res.render("home")
 });
+
+app.get('/posts/new', (req, res) => {
+  // Render the new-posts view
+  res.render('posts-new');
+})
 
 // Start Server
 
