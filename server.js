@@ -2,13 +2,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
+// Set db
+require('./data/reddit-db');
 
 // App Setup
 const app = express();
 require('./controllers/posts.js')(app);
-
-// Set db
-require('./data/reddit-db');
 
 // Use Body Parser
 app.use(bodyParser.json());
