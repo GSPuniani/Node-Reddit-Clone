@@ -39,3 +39,7 @@ app.get('/posts/new', (req, res) => {
 app.listen(3000, () => {
   console.log('RedditJS listening on port localhost:3000!');
 });
+
+
+// Export app for mocha testing
+module.exports = app;
