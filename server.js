@@ -7,7 +7,6 @@ require('./data/reddit-db');
 
 // App Setup
 const app = express();
-require('./controllers/posts.js')(app);
 
 // Use Body Parser
 app.use(bodyParser.json());
@@ -15,6 +14,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Add after body parser initialization!
 app.use(expressValidator());
+
+// Controllers
+require('./controllers/posts.js')(app);
 
 // Middleware
 const exphbs  = require('express-handlebars');
