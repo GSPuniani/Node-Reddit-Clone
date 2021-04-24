@@ -22,7 +22,7 @@ module.exports = app => {
           })
           .catch(err => {
             console.log(err.message);
-            })
+          })
     })
 
     app.get("/posts/:id", function(req, res) {
