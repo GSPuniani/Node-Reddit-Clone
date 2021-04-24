@@ -6,6 +6,7 @@ This project is a clone of [Reddit](https://www.reddit.com/) with posts, comment
 <ul>
 <li>Node.js</li>
 <li>Express.js</li>
+<li>Handlebars</li>
 <li>MongoDB & Mongoose (ODM)</li>
 <li>JSON Web Tokens (JWT)</li>
 </ul>
