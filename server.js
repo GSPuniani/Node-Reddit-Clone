@@ -1,7 +1,10 @@
 // Require Libraries
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
+var cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 
 
 // App Setup
@@ -14,6 +17,8 @@ app.use(express.urlencoded({ extended: false }));
 // Add after body parser initialization!
 app.use(expressValidator());
 
+app.use(cookieParser()); // Add this after you initialize express.
+
 
 
 // Middleware
@@ -21,6 +26,7 @@ const exphbs  = require('express-handlebars');
 app.use(express.static('public'));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
+// Handlebars.registerPartial('navbar');
 
 // Routes
 // app.get('/', (req, res) => {
@@ -35,6 +41,7 @@ app.get('/posts/new', (req, res) => {
 // Controllers
 require('./controllers/posts.js')(app);
 require('./controllers/comments.js')(app);
+require('./controllers/auth.js')(app);
 
 // Set db
 require('./data/reddit-db');
